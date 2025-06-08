@@ -14,13 +14,21 @@ This file tracks planned features, progress, and milestones as I build a real-ti
 
 ---
 
-## 🚧 In Progress
+## 🚧Step 2
 
-- [ ] Implement Canny edge detection
-- [ ] Apply region of interest (ROI) masking
-- [ ] Use Hough Transform to detect line segments
-- [ ] Overlay detected lines on video frames
-- [ ] Save processed output to `output/processed_video.mp4`
+- [x] Implement Canny edge detection
+- [x] Apply region of interest (ROI) masking
+- [x] Use Hough Transform to detect line segments
+- [x] Overlay detected lines on video frames
+- [x] Save processed output to `output/processed_video.mp4`
+
+## Next Steps
+- [ ] Filter out short or horizontal lines (bottom-edge false positives)
+- [ ] Separate left and right lane lines using slope and position
+- [ ] Average lane lines for smoother tracking
+- [ ] Extrapolate lines to extend full lane boundaries
+- [ ] Start working on path prediction overlay (optional)
+
 
 ---
 
