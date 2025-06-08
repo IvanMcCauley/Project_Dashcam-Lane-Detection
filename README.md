@@ -1,56 +1,80 @@
-# 🚗 Dashcam Lane Detection - Computer Vision for Autonomous Driving
+# 🚗 Dashcam Lane Detection - Computer Vision for Autonomous Driving (Python + OpenCV)
 
-This is a personal side project focused on building a basic perception pipeline for autonomous vehicles. The goal is to detect lane lines and overlay projected paths on dashcam video footage using Python and OpenCV.
-
----
-
-## 🎯 Project Goal
-
-The purpose of this project is to:
-
-- Build a real-time computer vision pipeline for lane detection using dashcam footage
-- Understand and apply fundamental techniques like edge detection, masking, and line detection
-- Develop hands-on experience with OpenCV and video processing
-- Demonstrate relevant skills for autonomous driving roles at companies like BMW, CARIAD, ZF, and Aptiv
+A real-time lane detection system built using Python and OpenCV, designed to process my personal dashcam footage and overlay detected lane lines on the road. This project replicates core visual perception logic used in autonomous vehicles.
 
 ---
 
-## 🛠️ Current Progress (08 June 2025)
+## 🎯 Project Motivation
 
-✅ Went for an early morning drive for minimal traffic and recorded dashcam footage  
-✅ Trimmed raw video to usable clip  
-✅ Set up folder structure for code and data  
-✅ Installed Python + OpenCV + NumPy  
-✅ Ran first Python test script to confirm video can load with OpenCV  
+Autonomous vehicles rely heavily on robust lane detection as part of their perception stack. As a Mechatronic Engineering graduate passionate about self-driving tech, I built this project to:
 
-🔜 Next step: Implement basic Canny edge detection + region of interest masking
+- Demonstrate computer vision skills for AV perception
+- Build a clean, realistic implementation suitable for GitHub/portfolio
+- Prepare for roles in ADAS/autonomy at companies like BMW, Waymo, Mobileye, etc.
+- Most importantly - to learn as much as I can
 
 ---
 
-## 🗂️ Planned Folder Structure
-lane-detection-dashcam/ - Root project folder
+## ✨ Key Features
 
-data/ - Contains all project data
+- Canny edge detection and Gaussian blur preprocessing  
+- Region of Interest (ROI) masking to focus on the drivable lane  
+- Probabilistic Hough Line Transform for robust line detection  
+- Automatic separation of left/right lane candidates by slope  
+- Least-squares line fitting with color-coded overlay  
+- Semi-transparent lane fill polygon for clear visualization  
+- Real-time video processing with frame-by-frame output  
+- Modular, clean Python code ready for extension
 
-raw/ - Holds the raw dashcam .mp4 footage
+---
 
-output/ - Folder where processed video clips will be saved
+## 🛠️ How It Works
 
-src/ - Source code files for the lane detection pipeline (e.g. main.py, lane_detector.py, utils.py)
+1. **Video Input**  
+   Load dashcam footage using `cv2.VideoCapture`.
+   ![image](https://github.com/user-attachments/assets/5a602e42-a657-408f-9447-d0eac736162d)
 
-test_video.py - A simple test script to verify video playback using OpenCV
+3. **Preprocessing**  
+   Convert to grayscale → blur → edge detect using Canny.
+   ![image](https://github.com/user-attachments/assets/34c6b3f5-4297-4ba0-9fb4-d48c47707c07)
 
 
-- ## 🧠 Learning Focus
+5. **Apply Region of Interest**  
+   Use a trapezoidal mask to isolate the road region.
+![image](https://github.com/user-attachments/assets/1e105ad3-8a72-4554-a36a-5371b49a3b86) !
 
-This project is being built incrementally with the intention of fully understanding each part of the pipeline. I will be documenting and revisiting areas like:
+6. **Detect Lines**  
+   Run `cv2.HoughLinesP` to extract line segments.
+![image](https://github.com/user-attachments/assets/2cb4cf1f-30e3-4731-b1d9-7f2d3c6ea933)
 
-- Canny edge detection parameters
-- Region masking logic
-- Hough Transform tuning
-- Polynomial curve fitting for curved lanes
-- Path overlay visualization
 
-- ## 🧾 License
+7. **Classify Lines**  
+   Separate segments by slope into left/right categories.
+![image](https://github.com/user-attachments/assets/5a21f7d9-dcd1-4405-b7dc-403094d011a2)
 
-This is an open personal learning project. You're welcome to reference or adapt it, but please build your own understanding - just like I am.
+
+8. **Line Fitting**  
+   Use `np.polyfit` to fit a clean single line to each side.
+![image](https://github.com/user-attachments/assets/31e659f4-b0c2-4532-8082-83e4f260e2f6)
+
+9. **Draw Overlay**  
+   - Draw left (yellow) and right (green) lines  
+   - Fill polygon between them using `cv2.fillPoly`  
+   - Blend with alpha transparency
+![image](https://github.com/user-attachments/assets/34bfbc4f-458d-425a-83c6-e5571e8e825d)
+
+---
+
+## 📷 Demo
+
+### 🎞️ Input Clip (Dashcam Footage)
+*Add input video*
+
+
+### 🧠 Lane Detection Output
+*Add output video*
+
+---
+
+## 🖥️ Source Code
+
