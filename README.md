@@ -81,10 +81,10 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 
 | File | Description |
 |------|-------------|
-| [`src/main.py`](./src/main.py) | Main entry point — loads video, runs frame-by-frame lane detection, saves output |
-| [`src/lane_detector.py`](./src/lane_detector.py) | Core logic for detecting lanes, classifying line segments, and rendering overlays |
-| [`src/utils.py`](./src/utils.py) | Helper functions for masking the region of interest and (optional) line drawing |
-| [`test_video.py`](./test_video.py) | Lightweight debugging script for testing raw video playback without processing |
+| [`main.py`](main.py) | Main entry point — loads video, runs frame-by-frame lane detection, saves output |
+| [`lane_detector.py`](lane_detector.py) | Core logic for detecting lanes, classifying line segments, and rendering overlays |
+| [utils.py`](utils.py) | Helper functions for masking the region of interest and (optional) line drawing |
+| [`test_video.py`](test_video.py) | Lightweight debugging script for testing raw video playback without processing |
 
 
 
