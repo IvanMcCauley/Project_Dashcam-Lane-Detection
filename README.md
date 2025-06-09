@@ -41,7 +41,7 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 
 5. **Apply Region of Interest**  
    Use a trapezoidal mask to isolate the road region.
-![image](https://github.com/user-attachments/assets/1e105ad3-8a72-4554-a36a-5371b49a3b86) !
+![image](https://github.com/user-attachments/assets/1e105ad3-8a72-4554-a36a-5371b49a3b86) 
 
 6. **Detect Lines**  
    Run `cv2.HoughLinesP` to extract line segments.
@@ -77,4 +77,45 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 ---
 
 ## 🖥️ Source Code
+## 📂 Source Code
 
+| File | Description |
+|------|-------------|
+| [`src/main.py`](./src/main.py) | Main entry point — loads video, runs frame-by-frame lane detection, saves output |
+| [`src/lane_detector.py`](./src/lane_detector.py) | Core logic for detecting lanes, classifying line segments, and rendering overlays |
+| [`src/utils.py`](./src/utils.py) | Helper functions for masking the region of interest and (optional) line drawing |
+| [`test_video.py`](./test_video.py) | Lightweight debugging script for testing raw video playback without processing |
+
+
+
+
+### 🚀 Example Usage
+If you want to try the program yourself:
+- Clone the files above and place them according to the following structure:
+```
+lane_detection_dashcam/
+├── data/
+│   └── raw/
+│       └── lane_test_clip.mp4       # Input video file
+├── output/
+│   └── processed_video.mp4          # Output video (this auto-saved when the program runs, you don't need to put this in manually)
+├── src/
+│   ├── main.py                      # Main runner
+│   ├── lane_detector.py             # Detection logic
+│   └── utils.py                     # Region of Interest, helpers
+└── test_video.py                    # Quick video viewer (initial test)
+```
+- Install the required Python libraries by opening a terminal and running:
+```
+pip install opencv-python numpy
+```
+Run the lane detection pipeline with:
+```
+python -m src.main
+```
+This will:
+- Load your input dashcam video from data/raw/lane_test_clip.mp4
+- Process each frame to detect and overlay lane lines
+- Fill the drivable area with a transparent color
+- Save the final result to output/processed_video.mp4
+- Show a real-time preview window (press q to exit)
