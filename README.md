@@ -1,6 +1,13 @@
 # 🚗 Dashcam Lane Detection - Computer Vision for Autonomous Driving (Python + OpenCV)
 
-A real-time lane detection system that I built using Python and OpenCV, designed to process my personal dashcam footage and overlay detected lane lines on the road. This project replicates core visual perception logic used in autonomous vehicles.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+---
+
+
+A real-time lane detection system that I built using Python and OpenCV, designed to process my  own dashcam footage and overlay detected lane lines on the road. This project replicates core visual perception logic used in autonomous vehicles.
 
 ---
 
@@ -25,6 +32,8 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 - Semi-transparent lane fill polygon for clear visualization  
 - Real-time video processing with frame-by-frame output  
 - Modular, clean Python code ready for extension
+
+
 
 ---
 
@@ -81,7 +90,7 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 |------|-------------|
 | [`main.py`](main.py) | Main entry point - loads video, runs frame-by-frame lane detection, saves output |
 | [`lane_detector.py`](lane_detector.py) | Core logic for detecting lanes, classifying line segments, and rendering overlays |
-| ['utils.py`](utils.py) | Helper functions for masking the region of interest and line drawing |
+| [`utils.py`](utils.py) | Helper functions for masking the region of interest and line drawing |
 | [`test_video.py`](test_video.py) | Lightweight debugging script for testing raw video playback without processing |
 | [`lane_test_clip`](https://drive.google.com/file/d/1ibkRtDaTSSNpaCJ08TMMahfGAoRvLXVw/view?usp=sharing) | Input dashcam video file (google drive link - download) |
 | [`requirements.txt`](requirements.txt) | List of required Python libraries for quick setup |
@@ -125,7 +134,6 @@ This will:
 ---
 
 ## 📚 What I Learned
-
 - How to build a real-time lane detection pipeline from scratch
 - Practical experience tuning Hough Transform and ROI masks
 - Clean modular coding with NumPy + OpenCV
@@ -140,5 +148,11 @@ This will:
 - Add curve handling with polynomial fitting (for winding roads)
 - Temporal smoothing across frames to reduce jitter
 - Extend to multi-lane roads and markings
-- Export path trajectory coordinates for downstream use (trajecory planning, control etc)
+- Export detected lane trajectory for use in planning or control (e.g., future AV stack integration)
+
+## 👨‍💻 Built By
+
+Ivan McCauley — Mechatronics Engineering Graduate  
+[LinkedIn](https://www.linkedin.com/in/ivan-mccauley-82b17a177)
+
 
