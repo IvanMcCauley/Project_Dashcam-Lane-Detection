@@ -37,6 +37,7 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 
 ---
 
+
 ## 🛠️ How It Works
 
 <table>
@@ -44,30 +45,37 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
   <td><strong>1. Video Input</strong><br>Load dashcam footage using <code>cv2.VideoCapture</code>.<br>
     <img src="https://github.com/user-attachments/assets/5a602e42-a657-408f-9447-d0eac736162d" width="250">
   </td>
-  <td><strong>2. Preprocessing</strong><br>Convert to grayscale → blur → edge detect using Canny.<br>
+  <td><strong>2. Grayscale & Blur</strong><br>Convert to grayscale and apply Gaussian blur to reduce noise.<br>
+    <img src="https://github.com/user-attachments/assets/adf57d8c-e727-4fc7-bec8-89701a6842c3" width="250">
+  </td>
+  <td><strong>3. Edge Detection</strong><br>Use Canny edge detection to highlight lane boundaries.<br>
     <img src="https://github.com/user-attachments/assets/34c6b3f5-4297-4ba0-9fb4-d48c47707c07" width="250">
   </td>
-  <td><strong>3. Apply ROI</strong><br>Use a trapezoidal mask to isolate the road.<br>
-    <img src="https://github.com/user-attachments/assets/1e105ad3-8a72-4554-a36a-5371b49a3b86" width="250">
-  </td>
 </tr>
 <tr>
-  <td><strong>4. Detect Lines</strong><br>Run <code>cv2.HoughLinesP</code> to extract segments.<br>
+  <td><strong>4. Apply ROI</strong><br>Use a trapezoidal mask to isolate the road region.<br>
+    <img src="https://github.com/user-attachments/assets/9ae3aae0-2e85-4ec4-b60c-78d617ea8493" width="250">
+  </td>
+  <td><strong>5. Detect Lines</strong><br>Masked edge image (Canny + ROI), ready for line detection.<br>
     <img src="https://github.com/user-attachments/assets/f7c1aaa7-59e0-48a5-8ef6-9613ad166947" width="250">
   </td>
-  <td><strong>5. Classify Lines</strong><br>Split into left/right lines based on slope.<br>
-    <img src="https://github.com/user-attachments/assets/5a21f7d9-dcd1-4405-b7dc-403094d011a2" width="250">
-  </td>
-  <td><strong>6. Line Fitting</strong><br>Use <code>np.polyfit</code> to fit straight lines.<br>
-    <img src="https://github.com/user-attachments/assets/31e659f4-b0c2-4532-8082-83e4f260e2f6" width="250">
+  <td><strong>6. Hough Transform</strong><br>Apply <code>cv2.HoughLinesP</code> to detect line segments from the masked edge image.<br>
+    <img src="https://github.com/user-attachments/assets/f64eba2a-2826-4e57-ae46-abe91cdc21ab" width="250">
   </td>
 </tr>
 <tr>
-  <td colspan="3"><strong>7. Draw Overlay</strong><br>Final step: Format lane line colour and fill lane area using <code>cv2.fillPoly</code> and alpha blending.<br>
-    <img src="https://github.com/user-attachments/assets/34bfbc4f-458d-425a-83c6-e5571e8e825d" width="700">
+  <td><strong>7. Classify Lines</strong><br>Split line segments into left/right groups based on slope.<br>
+    <img src="https://github.com/user-attachments/assets/5a21f7d9-dcd1-4405-b7dc-403094d011a2" width="250">
+  </td>
+  <td><strong>8. Line Fitting</strong><br>Use <code>np.polyfit</code> to fit straight lines to each side.<br>
+    <img src="https://github.com/user-attachments/assets/31e659f4-b0c2-4532-8082-83e4f260e2f6" width="250">
+  </td>
+  <td><strong>9. Draw Overlay</strong><br>Render final lane lines and fill lane area using <code>cv2.fillPoly</code> and alpha blending.<br>
+    <img src="https://github.com/user-attachments/assets/34bfbc4f-458d-425a-83c6-e5571e8e825d" width="250">
   </td>
 </tr>
 </table>
+
 
 
 
@@ -81,6 +89,11 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 
 ### Lane Detection Output
 [Click here to see the result](https://drive.google.com/file/d/1GWE1YMmQjrz3NEOppxTaMh8bqTneD93G/view?usp=sharing)
+
+
+### Step-by-Step Visual Pipeline
+Watch how the system transforms raw footage through each stage - from grayscale to overlay:  
+[Click here to view the full step-by-step video](https://drive.google.com/file/d/1S1F95hh70vih55pI6psfvrBFAfLVuquN/view?usp=sharing)
 
 ---
 
