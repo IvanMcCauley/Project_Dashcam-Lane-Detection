@@ -17,7 +17,7 @@ Autonomous vehicles rely heavily on robust lane detection as part of their perce
 
 - Demonstrate computer vision skills for AV perception
 - Build a clean, realistic implementation suitable for GitHub/portfolio
-- Prepare for roles in ADAS/autonomy at companies like BMW, Waymo, Mobileye, etc.
+- Prepare for roles in ADAS/autonomy
 - Most importantly - to learn as much as I can
 
 ---
